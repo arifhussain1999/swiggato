@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.Formula;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +25,16 @@ public class Restaurant {
 
     String name;
 
+    String location;
+
     @Column(unique = true,nullable = false)
     @Size(min = 10,max = 10)
     String contactNo;
 
+
     boolean open;
 
+    @Enumerated(EnumType.STRING)
     RestaurantCategory restaurantCategory;
 
     @OneToMany(mappedBy = "restaurant",cascade = CascadeType.ALL)
