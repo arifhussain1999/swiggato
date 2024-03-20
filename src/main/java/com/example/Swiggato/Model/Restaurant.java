@@ -2,11 +2,10 @@ package com.example.Swiggato.Model;
 
 import com.example.Swiggato.Enum.RestaurantCategory;
 import jakarta.persistence.*;
-//import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.hibernate.annotations.Formula;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +29,6 @@ public class Restaurant {
     @Column(unique = true,nullable = false)
     @Size(min = 10,max = 10)
     String contactNo;
-
 
     boolean open;
 

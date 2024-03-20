@@ -9,7 +9,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class FoodResponse {
+public class FoodItemResponse {
 
     String dishName;
 

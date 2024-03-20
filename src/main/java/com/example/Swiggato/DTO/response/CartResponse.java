@@ -13,5 +13,5 @@ public class CartResponse {
 
     double cartTotal;
 
-    List<FoodResponse> foodResponseList;
+    List<FoodItemResponse> foodResponseList;
 }

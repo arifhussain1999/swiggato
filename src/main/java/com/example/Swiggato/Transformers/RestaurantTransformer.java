@@ -1,12 +1,14 @@
 package com.example.Swiggato.Transformers;
 
 import com.example.Swiggato.DTO.request.RestaurantRequest;
-import com.example.Swiggato.DTO.response.FoodResponse;
+import com.example.Swiggato.DTO.response.FoodItemResponse;
 import com.example.Swiggato.DTO.response.RestaurantResponse;
-import com.example.Swiggato.Model.FoodItem;
+
 import com.example.Swiggato.Model.Restaurant;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RestaurantTransformer {
 
@@ -17,14 +19,17 @@ public class RestaurantTransformer {
                 .location(restaurantRequest.getLocation())
                 .restaurantCategory(restaurantRequest.getRestaurantCategory())
                 .open(true)
+                .foodItemList(new ArrayList<>())
+                .orderEntities(new ArrayList<>())
                 .build();
     }
 
     public static RestaurantResponse RestaurantToRestaurantResponse(Restaurant restaurant){
 
-        List<FoodItem> foodItems = restaurant.getFoodItemList();
 
-        List<FoodResponse> foodResponseList = FoodTransformer.FoodToFoodResponse(foodItems);
+        List<FoodItemResponse> foodResponseList = restaurant.getFoodItemList()
+                .stream().map(foodItem -> FoodTransformer.FoodToFoodResponse(foodItem))
+                .collect(Collectors.toList());
 
         return RestaurantResponse.builder()
                 .name(restaurant.getName())

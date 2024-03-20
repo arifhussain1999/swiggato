@@ -12,7 +12,7 @@ import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
-@Data // getter,setter,toString,required args contructor
+@Data // getter,setter,toString,required args constructor
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

@@ -1,6 +1,5 @@
 package com.example.Swiggato.DTO.response;
 
-import com.example.Swiggato.Enum.RestaurantCategory;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -18,7 +17,7 @@ public class RestaurantResponse {
 
     String contactNo;
 
-    List<FoodResponse> menu;
+    List<FoodItemResponse> menu;
 
     String location;
 }
