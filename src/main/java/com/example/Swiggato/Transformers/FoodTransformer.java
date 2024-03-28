@@ -1,6 +1,6 @@
 package com.example.Swiggato.Transformers;
 
-import com.example.Swiggato.DTO.request.FoodItemRequest;
+import com.example.Swiggato.DTO.request.FoodRequest;
 import com.example.Swiggato.DTO.response.FoodItemResponse;
 import com.example.Swiggato.Model.FoodItem;
 
@@ -29,7 +29,7 @@ public class FoodTransformer {
                 .build();
     }
 
-    public static FoodItem FoodItemRequestToFood(FoodItemRequest foodItemRequest){
+    public static FoodItem FoodItemRequestToFood(FoodRequest foodItemRequest){
         return FoodItem.builder()
                 .dishName(foodItemRequest.getDishName())
                 .foodCategory(foodItemRequest.getFoodCategory())

@@ -8,7 +8,9 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class FoodItemRequest {
+public class FoodRequest {
+
+    int restaurantId;
 
     String dishName;
 
