@@ -36,8 +36,6 @@ public class OrderEntity {
     @JoinColumn
     DeliveryPartner deliveryPartner;
 
-    @OneToMany(mappedBy = "orderEntity",cascade = CascadeType.ALL)
-    List<FoodItem> foodItemList = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn

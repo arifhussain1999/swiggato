@@ -1,11 +1,11 @@
 package com.example.Swiggato.Service;
 
-import com.example.Swiggato.DTO.request.FoodRequest;
+import com.example.Swiggato.DTO.request.MenuRequest;
 import com.example.Swiggato.DTO.request.RestaurantRequest;
-import com.example.Swiggato.DTO.response.FoodItemResponse;
+import com.example.Swiggato.DTO.response.MenuResponse;
 import com.example.Swiggato.DTO.response.RestaurantResponse;
 import com.example.Swiggato.Exception.RestaurantNotFoundException;
-import com.example.Swiggato.Model.FoodItem;
+import com.example.Swiggato.Model.MenuItem;
 import com.example.Swiggato.Model.Restaurant;
 import com.example.Swiggato.Repository.RestaurantRepository;
 import com.example.Swiggato.Transformers.FoodTransformer;
@@ -51,24 +51,24 @@ public class RestaurantService {
         return "Your restaurant is now close for the customers :(";
     }
 
-    public RestaurantResponse addFoodToRestaurant(FoodRequest foodRequest) {
-        Optional<Restaurant> restaurantOptional = restaurantRepository.findById(foodRequest.getRestaurantId());
+    public RestaurantResponse addMenuItemToRestaurant(MenuRequest menuRequest) {
+        Optional<Restaurant> restaurantOptional = restaurantRepository.findById(menuRequest.getRestaurantId());
 
         if(restaurantOptional.isEmpty()){
             throw new RestaurantNotFoundException("Restaurant Not Found!");
         }
         Restaurant restaurant = restaurantOptional.get();
-        FoodItem foodItem = FoodTransformer.FoodItemRequestToFood(foodRequest);
+        MenuItem menuItem = FoodTransformer.FoodItemRequestToFood(menuRequest);
 
-        foodItem.setRestaurant(restaurant);
-        restaurant.getFoodItemList().add(foodItem);
+        menuItem.setRestaurant(restaurant);
+        restaurant.getMenuItemList().add(menuItem);
 
         Restaurant savedRestaurant = restaurantRepository.save(restaurant);
 
         return RestaurantTransformer.RestaurantToRestaurantResponse(savedRestaurant);
     }
 
-    public List<FoodItemResponse> getMenu(int restaurantId) {
+    public List<MenuResponse> getMenu(int restaurantId) {
         Optional<Restaurant> restaurantOptional = restaurantRepository.findById(restaurantId);
 
         if(restaurantOptional.isEmpty()){
@@ -76,11 +76,11 @@ public class RestaurantService {
         }
         Restaurant restaurant = restaurantOptional.get();
 
-        List<FoodItemResponse> foodItemResponses = restaurant.getFoodItemList()
+        List<MenuResponse> menuRespons = restaurant.getMenuItemList()
                 .stream().map(foodItem -> FoodTransformer.FoodToFoodResponse(foodItem))
                 .collect(Collectors.toList());
 
-        return foodItemResponses;
+        return menuRespons;
 
     }
 }

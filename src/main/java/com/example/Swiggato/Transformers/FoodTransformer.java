@@ -1,41 +1,41 @@
 package com.example.Swiggato.Transformers;
 
-import com.example.Swiggato.DTO.request.FoodRequest;
-import com.example.Swiggato.DTO.response.FoodItemResponse;
-import com.example.Swiggato.Model.FoodItem;
+import com.example.Swiggato.DTO.request.MenuRequest;
+import com.example.Swiggato.DTO.response.MenuResponse;
+import com.example.Swiggato.Model.MenuItem;
 
 public class FoodTransformer {
 
-    public static FoodItemResponse FoodToFoodResponse(FoodItem foodItem) {
-//        if (foodItems==null){
+    public static MenuResponse FoodToFoodResponse(MenuItem menuItem) {
+//        if (menuItems==null){
 //           return new ArrayList<>();
 //        }
-//        List<FoodItemResponse> foodResponseList = new ArrayList<>();
-//        for (FoodItem foodItem : foodItems) {
-//            FoodItemResponse /foodResponse = FoodItemResponse.builder()
-//                    .dishName(foodItem.getDishName())
-//                    .cost(foodItem.getCost())
+//        List<MenuResponse> foodResponseList = new ArrayList<>();
+//        for (MenuItem menuItem : menuItems) {
+//            MenuResponse /foodResponse = MenuResponse.builder()
+//                    .dishName(menuItem.getDishName())
+//                    .cost(menuItem.getCost())
 //                    .build();
 //
 //            foodResponseList.add(foodResponse);
 //        }
 //        return foodResponseList;
 
-        return FoodItemResponse.builder()
-                .dishName(foodItem.getDishName())
-                .cost(foodItem.getCost())
-                .foodCategory(foodItem.getFoodCategory())
-                .veg(foodItem.isVeg())
+        return MenuResponse.builder()
+                .dishName(menuItem.getDishName())
+                .cost(menuItem.getCost())
+                .foodCategory(menuItem.getFoodCategory())
+                .veg(menuItem.isVeg())
                 .build();
     }
 
-    public static FoodItem FoodItemRequestToFood(FoodRequest foodItemRequest){
-        return FoodItem.builder()
-                .dishName(foodItemRequest.getDishName())
-                .foodCategory(foodItemRequest.getFoodCategory())
-                .available(foodItemRequest.isAvailable())
-                .veg(foodItemRequest.isVeg())
-                .cost(foodItemRequest.getCost())
+    public static MenuItem FoodItemRequestToFood(MenuRequest menuRequest){
+        return MenuItem.builder()
+                .dishName(menuRequest.getDishName())
+                .foodCategory(menuRequest.getFoodCategory())
+                .available(menuRequest.isAvailable())
+                .veg(menuRequest.isVeg())
+                .cost(menuRequest.getCost())
                 .build();
     }
 }

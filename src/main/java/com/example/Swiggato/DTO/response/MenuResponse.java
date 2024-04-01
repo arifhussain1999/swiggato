@@ -1,4 +1,5 @@
-package com.example.Swiggato.DTO.request;
+package com.example.Swiggato.DTO.response;
+
 import com.example.Swiggato.Enum.FoodCategory;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -8,9 +9,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class FoodRequest {
-
-    int restaurantId;
+public class MenuResponse {
 
     String dishName;
 
@@ -19,6 +18,4 @@ public class FoodRequest {
     double cost;
 
     boolean veg;
-
-    boolean available;
 }

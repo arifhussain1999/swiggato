@@ -17,7 +17,7 @@ public class RestaurantResponse {
 
     String contactNo;
 
-    List<FoodItemResponse> menu;
+    List<MenuResponse> menu;
 
     String location;
 }
